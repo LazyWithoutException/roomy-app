@@ -345,6 +345,7 @@ require('layout/footer.php');
                                    
 
                                     <div class="row">
+
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Latituda</label>
@@ -366,6 +367,7 @@ require('layout/footer.php');
                                             </div>
                                         </div>
                                     </div>
+                                    <div id="mappost" style="width:500px;height:300px;">mapa</div>
 
                                     <button id="btnSubmit"   class="btn btn-info btn-fill pull-right">Prosledi odglas</button>
                                     <div class="clearfix"></div>
@@ -404,7 +406,8 @@ require('layout/footer.php');
 
 
 </body>
-         <script src="post-manager.js"></script>
+<script src="mappost.js"></script>
+<script src="post-manager.js"></script>
     <script src="assets/js/chartist.min.js"></script>
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
@@ -422,5 +425,7 @@ require('layout/footer.php');
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 
-	
+ <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEkh7spdIHPnxUHSjqk5Y4WTrS8fEiez8&callback=initMap">
+    </script>	
 </html>
