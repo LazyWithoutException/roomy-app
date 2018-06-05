@@ -246,6 +246,101 @@ class DB
             }
         }
     }
+
+    function dodajSliku($ime,$slika)
+    {
+        $konekcija = new mysqli(self::host, self::username, self::password, self::dbName);
+        // koristimo charset utf8 za prikaz karaktera van osnovne ASCII tabele
+        $konekcija->set_charset('utf8');
+        if ($konekcija->connect_errno) {
+            // u slučaju greške pri povezivanju odštampati odgovarajuću poruku
+            print ("Greška pri povezivanju sa bazom podataka ($konekcija->connect_errno): $konekcija->connect_error");
+        } else {
+            $tekst_upita = "INSERT INTO image (name,image) VALUES ('$ime','$slika')";
+            $rezultat = $konekcija->query($tekst_upita);
+
+            // ovde $rezultat moze biti samo true ili false posto se nista ne vraca iz baze
+            if ($rezultat) {
+                // zatvaranje konekcije
+                $konekcija->close();
+            }
+            else{
+                if ($konekcija->errno) {
+                    // u slucaju greške pri izvršenju upita odštampati odgovarajucu poruku
+                    print ("Greška pri izvrsenju upita ($konekcija->errno): $konekcija->error");
+                } else {
+                    // u slucaju greške pri izvršenju upita odštampati odgovarajucu poruku
+                    print ("Nepoznata greška pri izvrsenju upita");
+                }
+            }
+        }
+    }
+
+    function prikaziSlike()
+    {
+        $konekcija = new mysqli(self::host, self::username, self::password, self::dbName);
+        // koristimo charset utf8 za prikaz karaktera van osnovne ASCII tabele
+        $konekcija->set_charset('utf8');
+        if ($konekcija->connect_errno) {
+            // u slučaju greške pri povezivanju odštampati odgovarajuću poruku
+            print ("Greška pri povezivanju sa bazom podataka ($konekcija->connect_errno): $konekcija->connect_error");
+        } else {
+            $tekst_upita = "SELECT * FROM image";
+            $rezultat = $konekcija->query($tekst_upita);
+
+            // ovde $rezultat moze biti samo true ili false posto se nista ne vraca iz baze
+            if ($rezultat) {
+                $niz = array();
+
+                while ($niz=$rezultat->fetch_array()) 
+                {
+                    //$niz[$id] = new Marker($stan_id, $longituda, $latituda);
+                    echo '<img height="200" width="200" src="data:image;base64,'.$niz[2].' "> ';
+                }
+
+                $konekcija->close();
+                //return $niz;
+            }
+            else{
+                if ($konekcija->errno) {
+                    // u slucaju greške pri izvršenju upita odštampati odgovarajucu poruku
+                    print ("Greška pri izvrsenju upita ($konekcija->errno): $konekcija->error");
+                } else {
+                    // u slucaju greške pri izvršenju upita odštampati odgovarajucu poruku
+                    print ("Nepoznata greška pri izvrsenju upita");
+                }
+            }
+        }
+    }
+
+    function dodajSlikuZaKorisnika($slika)
+    {
+        $konekcija = new mysqli(self::host, self::username, self::password, self::dbName);
+        // koristimo charset utf8 za prikaz karaktera van osnovne ASCII tabele
+        $konekcija->set_charset('utf8');
+        if ($konekcija->connect_errno) {
+            // u slučaju greške pri povezivanju odštampati odgovarajuću poruku
+            print ("Greška pri povezivanju sa bazom podataka ($konekcija->connect_errno): $konekcija->connect_error");
+        } else {
+            $tekst_upita = "INSERT INTO members (slika) VALUES ($slika')";
+            $rezultat = $konekcija->query($tekst_upita);
+
+            // ovde $rezultat moze biti samo true ili false posto se nista ne vraca iz baze
+            if ($rezultat) {
+                // zatvaranje konekcije
+                $konekcija->close();
+            }
+            else{
+                if ($konekcija->errno) {
+                    // u slucaju greške pri izvršenju upita odštampati odgovarajucu poruku
+                    print ("Greška pri izvrsenju upita ($konekcija->errno): $konekcija->error");
+                } else {
+                    // u slucaju greške pri izvršenju upita odštampati odgovarajucu poruku
+                    print ("Nepoznata greška pri izvrsenju upita");
+                }
+            }
+        }
+    }
 }
 
 ?>

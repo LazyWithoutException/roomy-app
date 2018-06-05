@@ -26,7 +26,7 @@ require('layout/footer.php');
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-    
+   
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -181,9 +181,6 @@ require('layout/footer.php');
             </div>
         </nav>
         <div class="content">
-                                       
-
-                                    
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -192,7 +189,17 @@ require('layout/footer.php');
                                 <h4 class="title">Postavi oglas</h4>
                             </div>
                             <div class="content">
+							
+							<div class="row">
+							<form action="fajlovi.php" method="post" enctype="multipart/form-data">
+                                
+                                <input type="file" name="image"/> <br/>
+                                <input type="submit" name="sumit" value="Upload"/>
+                                </br>
+                            </form>
+							</div>
                                 <div class="row">
+								
                                 <div class="col-md-6">
                                 <ul class="pagination">
                                 <li id="btnStan" >
@@ -249,6 +256,7 @@ require('layout/footer.php');
                                         </div>
                                     </div>
                                  
+                               
                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -262,7 +270,7 @@ require('layout/footer.php');
                                         </div>
                                        <div class="col-md-3">
                                        <div class="form-group">
-                                            <label>Kvadratur</label>
+                                            <label>Kvadratura</label>
                                                 <input  id="kvadratura" type="number" class="form-control" placeholder="100" min="0">
                                             </div>
                                         </div>
@@ -342,6 +350,9 @@ require('layout/footer.php');
                                             </div>
                                         </div>
                                     </div>
+
+                                   
+
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -363,18 +374,11 @@ require('layout/footer.php');
                                                 <textarea id="opis" rows="5" class="form-control" placeholder="Opistie detaljnije " value=""> </textarea>
                                             </div>
                                         </div>
-                                       
-
                                     </div>
-                                    <div class="card">
-                                    <div id="mappost" style="width:500px;height:500px;" ></div>
 
-                                    </div>
                                     <button id="btnSubmit"   class="btn btn-info btn-fill pull-right">Prosledi odglas</button>
                                     <div class="clearfix"></div>
-                                    
-                              </div>
-                              
+                               
                             </div>
                         </div>
                     </div>
@@ -382,13 +386,10 @@ require('layout/footer.php');
 
                 </div>
             </div>
-          
-
         </div>
-                     
         </div>
     
-       
+
         <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
@@ -409,12 +410,11 @@ require('layout/footer.php');
     </div>
     
 </div>
-</div>
+
 
 </body>
-<script src="mappost.js"></script>
-    <script src="post-manager.js"></script>
-   
+         <script src="post-manager.js"></script>
+    <script src="assets/js/chartist.min.js"></script>
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -431,9 +431,5 @@ require('layout/footer.php');
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 
- <!--  Google Maps Plugin    -->
- <script 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXee77Oqw02tlKUDNhMdlTlToYS7yTISM&callback=initMap">
- </script>
-   
+	
 </html>

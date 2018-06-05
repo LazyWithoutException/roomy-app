@@ -53,7 +53,20 @@ if(isset($_POST['submit'])){
 
 	}
 
+	if(getimagesize($_FILES['imageUser']['tmp_name'])==FALSE)
+    {
+        echo 'Please select image.';
+    }
+    else
+    {
+		echo "AAAAAA";
+        $image=addslashes($_FILES['imageUser']['tmp_name']);
+        $image=file_get_contents($image);
+        $image=base64_encode($image);
 
+       // DB::dodajSlikuZaKorisnika($image);
+    }
+		
 	//if no errors have been created carry on
 	if(!isset($error)){
 
@@ -66,12 +79,13 @@ if(isset($_POST['submit'])){
 		try {
 
 			//insert into database with a prepared statement
-			$stmt = $db->prepare('INSERT INTO members (username,password,email,active) VALUES (:username, :password, :email, :active)');
+			$stmt = $db->prepare('INSERT INTO members (username,password,email,active,slika) VALUES (:username, :password, :email, :active, :slika');
 			$stmt->execute(array(
 				':username' => $username,
 				':password' => $hashedpassword,
 				':email' => $email,
-				':active' => "Yes"
+				':active' => "Yes",
+				':slika' => $image
 			));
 			$id = $db->lastInsertId('memberID');
 
@@ -103,7 +117,7 @@ if(isset($_POST['submit'])){
 }
 
 //define page title
-$title = 'Demo';
+$title = 'Registration';
 
 //include header template
 require('layout/header.php');
@@ -152,6 +166,13 @@ require('layout/header.php');
 						</div>
 					</div>
 				</div>
+
+				
+                                
+                                <input type="file" name="imageUser"/> <br/>
+                               
+                                </br>
+                            
 
 				<div class="row">
 					<div class="col-xs-6 col-md-6"><input type="submit" name="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="5"></div>

@@ -27,7 +27,7 @@ require('layout/footer.php');
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-   
+    <script src="map_manager.js"></script>
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -175,7 +175,7 @@ require('layout/footer.php');
 
 
 </body>
-<script src="map_manager.js"></script>
+
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -193,13 +193,12 @@ require('layout/footer.php');
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
-    
 
     	
- <script 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXee77Oqw02tlKUDNhMdlTlToYS7yTISM&callback=initMap">
- </script>
-   
-    
+
+    <!--  Google Maps Plugin    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEkh7spdIHPnxUHSjqk5Y4WTrS8fEiez8&callback=initMap">
+    </script>
 	
 </html>
