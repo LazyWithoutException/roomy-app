@@ -74,10 +74,7 @@ require('layout/header.php');
 							echo "<h2 class='bg-success'>Password changed, you may now login.</h2>";
 							break;
 					}
-
 				}
-
-				
 				?>
 
 				<div class="form-group">

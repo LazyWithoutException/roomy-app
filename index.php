@@ -62,7 +62,7 @@ if(isset($_POST['submit'])){
 
 		//create the activasion code
 		$activasion = md5(uniqid(rand(),true));
-
+		// !!!!!!!!!!!!!!!! active =>$activasion u slucaju da imamo aktivaciju mejla
 		try {
 
 			//insert into database with a prepared statement
@@ -71,7 +71,7 @@ if(isset($_POST['submit'])){
 				':username' => $username,
 				':password' => $hashedpassword,
 				':email' => $email,
-				':active' => $activasion
+				':active' => "Yes"
 			));
 			$id = $db->lastInsertId('memberID');
 

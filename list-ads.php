@@ -1,11 +1,10 @@
 <?php require('includes/config.php'); 
-require_once('classes/lib.php');
 
 //if not logged in redirect to login page
 if(!$user->is_logged_in()){ header('Location: login.php'); exit(); }
 
 //define page title
-$title = 'Roomy Glavna';
+$title = 'Roomy Lista';
 
 //include header template
 require('layout/header.php'); 
@@ -27,7 +26,6 @@ require('layout/footer.php');
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-   
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -52,7 +50,7 @@ require('layout/footer.php');
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="orange" data-image="assets/img/sidebar-2.jpg">
+    <div class="sidebar" data-color="red" data-image="assets/img/sidebar-2.jpg">
 
     <!--
 
@@ -69,7 +67,7 @@ require('layout/footer.php');
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="memberpage.php">
 					<i class="pe-7s-map-marker"></i>
                         <p>Glavna mapa</p>
@@ -81,7 +79,7 @@ require('layout/footer.php');
                         <p>Postavi oglas</p>
                     </a>
                 </li>
-                <li>
+                <li  class="active">
                     <a href="list-ads.php">
                         <i class="pe-7s-note2"></i>
                         <p>Lista vasih oglasa</p>
@@ -105,7 +103,7 @@ require('layout/footer.php');
 
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
-            <div class="container-fluid" >
+            <div class="container-fluid"  data-color="blue">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
                         <span class="sr-only">Toggle navigation</span>
@@ -117,6 +115,12 @@ require('layout/footer.php');
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+								<p class="hidden-lg hidden-md">Dashboard</p>
+                            </a>
+                        </li>
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-globe"></i>
@@ -134,9 +138,38 @@ require('layout/footer.php');
                                 <li><a href="#">Another notification</a></li>
                               </ul>
                         </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+								<p class="hidden-lg hidden-md">Search</p>
+                            </a>
+                        </li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                               <p>Account</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+										Dropdown
+										<b class="caret"></b>
+									</p>
+
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                              </ul>
+                        </li>
                         <li>
                             <a href='logout.php'>
                                 <p>Log out</p>
@@ -148,8 +181,6 @@ require('layout/footer.php');
             </div>
         </nav>
 
-
-        <div id="map" style="width:100%;height:100%;"></div>
         </div>
 
 
@@ -175,7 +206,7 @@ require('layout/footer.php');
 
 
 </body>
-<script src="map_manager.js"></script>
+
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -186,6 +217,8 @@ require('layout/footer.php');
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
 
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
@@ -193,13 +226,5 @@ require('layout/footer.php');
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
-    
-
-    	
- <script 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXee77Oqw02tlKUDNhMdlTlToYS7yTISM&callback=initMap">
- </script>
-   
-    
 	
 </html>
