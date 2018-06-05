@@ -1,24 +1,9 @@
 
 function initMap() {
- 
-  var url = {lat:43.362121,lng: 21.916552};
-  var map = new google.maps.Map(document.getElementById('map'),{
-  zoom: 15,
-  center: url});
-
-  var marker = new google.maps.Marker({
-    position: url,
-    map: map
-  });
-  var marker = new google.maps.Marker({
-    position: {lat:43.360342,lng:21.905694},
-    map: map
-  });
-
-
-  var mapObj={
+  var uluru = {lat:43.362121,lng: 21.916552};
+  var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
-    center: url,
+    center: uluru,
     styles: [
       {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
       {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -99,6 +84,17 @@ function initMap() {
         stylers: [{color: '#17263c'}]
       }
     ]
-  }
+  });
+ 
+
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map
+  });
+  var marker = new google.maps.Marker({
+    position: {lat:43.360342,lng:21.905694},
+    map: map
+  });
+
 }
 

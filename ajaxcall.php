@@ -4,6 +4,8 @@ require_once('includes/config.php');
 include_once 'classes/password.php';
 
 
+
+
 $tip=(string)$_GET["tip"];
 $kvadratura=intval($_GET["kvadratura"]);
 $cena=intval($_GET["cena"]);
@@ -19,8 +21,6 @@ $langituda=intval($_GET["lng"]);
 $opis=(string)$_GET["opis"];
 $lokacija=(string)$_GET["adresa"];
 $memberId=intval($_SESSION['memberID']);
-
-echo $tip;
 
 $baza=new DB();
 $stan=new oglasZaStan(null,$langituda,$latituda,$namestenost,$tip,$grejanje,$pomocne_strukture,$cena,$kvadratura,$sobe,$sprat,$lokacija,$telefon,$opis,$uknjizenost,"a",$memberId);
