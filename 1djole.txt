@@ -1,6 +1,7 @@
-jocic kod1
-jocic kod2
+djole kod1
+djole kod2
 djole kod3
 djole kod4
 djole kod5
+
 djole kod6
