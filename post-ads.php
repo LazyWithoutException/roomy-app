@@ -367,12 +367,20 @@ require('layout/footer.php');
                                             </div>
                                         </div>
                                     </div>
+
+                                    <form action="fajlovi.php" method="post" enctype="multipart/form-data">
+                                        <input type="file" name="image"/> <br/>
+                                        <input type="submit" name="sumit" value="Upload"/>
+                                        </br>
+                                    </form>
+                                    
                                     <div id="mappost" style="width:500px;height:300px;">mapa</div>
 
                                     <button id="btnSubmit"   class="btn btn-info btn-fill pull-right">Prosledi odglas</button>
                                     <div class="clearfix"></div>
                                
                             </div>
+                            
                         </div>
                     </div>
                     

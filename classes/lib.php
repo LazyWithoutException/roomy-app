@@ -89,7 +89,7 @@ class DB
             // "s" označava string tip podataka.
             // "d" označava realni tip podataka.
             // PARAMETRI SE NAVODE PO REDOSLEDU U KOM SE OČEKUJU U PRIPREMLJENOM UPITU!
-            $naredba->bind_param("ssisssi", $o->pol, $o->lifestyle, $o->raspon_godina, $o->osobine, $o->hobi, $o->radni_odnos, $o->id_za_stan);        
+            $naredba->bind_param("ssisssi", $o->pol, $o->lifestyle, $o->raspon_godina, $o->osobine, $o->hobi, $o->radni_odnos, $o->stan_id);        
             $rezultat = $naredba->execute();
             $naredba->close();
             $konekcija->close();
@@ -149,7 +149,9 @@ class DB
         } 
         else 
         {
-            $naredba = $konekcija->prepare("SELECT * FROM oglas_za_stan ORDER BY stan_id ASC");
+            $memberId=intval($_SESSION['memberID']);
+            $naredba = $konekcija->prepare("SELECT * FROM oglas_za_stan WHERE memberID=?  ORDER BY stan_id ASC");
+            $naredba->bind_param("i", $memberId);
             $rezultat = $naredba->execute();
 
             $naredba->bind_result($stan_id, $longituda, $latituda, $namestenost, $tip_objekta, $grejanje, $pomocne_strukture, $cena, $kvadratura, $broj_soba, $sprat, $lokacija, $telefon, $dodatno, $uknjizenost, $datum_postavljanja, $memberID);
