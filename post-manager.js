@@ -1,6 +1,5 @@
-
-
 prosledi=function(){
+    console.log("nesto funkcija");
 var tip=document.getElementById("tip-objekta").value;
 var kvadratura=document.getElementById("kvadratura").value;
 var cena=document.getElementById("cena").value;
@@ -60,4 +59,4 @@ var divCimer=document.getElementById("cimer");
 divCimer.style.display="none";
 var divCimerr=document.getElementById("cimerr");
 divCimerr.style.display="none";
-console.log("aa");
+console.log("nesto");
