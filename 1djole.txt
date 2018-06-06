@@ -1,4 +1,4 @@
-djole kod1
+
 djole kod2
 djole kod3
 djole kod4
