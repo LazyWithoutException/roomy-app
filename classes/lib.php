@@ -378,23 +378,25 @@ class DB
             // u slučaju greške pri povezivanju odštampati odgovarajuću poruku
             print ("Greška pri povezivanju sa bazom podataka ($konekcija->connect_errno): $konekcija->connect_error");
         } else {
-            $tekst_upita = "SELECT * FROM image";
-            $rezultat = $konekcija->query($tekst_upita);
+            $naredba = $konekcija->prepare("SELECT * FROM image WHERE stan_id=?");
+            $naredba->bind_param("i", $_SESSION['kljuc']);
+            $rezultat = $naredba->execute();
+
+            $naredba->bind_result($id, $naziv, $stan_id);
 
             // ovde $rezultat moze biti samo true ili false posto se nista ne vraca iz baze
             if ($rezultat) {
                 $niz = array();
 
-                while ($niz=$rezultat->fetch_array()) 
+                while ($naredba->fetch()) 
                 {
-                    //$niz[$id] = new Marker($stan_id, $longituda, $latituda);
+                    $niz[] = array('id'=> $id,'naziv'=>$naziv, 'stan_id'=>$stan_id);
 
                     //echo '<img height="200" width="200" src="data:image;base64,'.$niz[2].' "> ';
                     //echo "<img height='250' width='250' src=$niz[1]>";
                 }
 
                 $konekcija->close();
-                var_dump($niz);
                 return $niz;
             }
             else{

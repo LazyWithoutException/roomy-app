@@ -208,18 +208,17 @@ require_once('classes/lib.php');
                                     <div class="form-group">
                                        <label for="exampleFormControlSelect1">Grejanje </label>
                                        <select class="form-control" id="grejanje">
-                                          <option>Da</option>
-                                          <option>Ne</option>
+                                          <option>Centralno</option>
+                                          <option>TA Pec</option>
+                                          <option>Etazno</option>
+                                          <option>Drugo</option>
                                        </select>
                                     </div>
                                  </div>
                                  <div class="col-md-3">
                                     <div class="form-group">
-                                       <label for="exampleFormControlSelect1">Pomocne zgrade </label>
-                                       <select class="form-control" id="pomocne-zgrade">
-                                          <option>Da</option>
-                                          <option>Ne</option>
-                                       </select>
+                                          <label>Pomocne strukture</label>
+                                          <input id="pomocne-zgrade" type="text" class="form-control" placeholder="Terasa,parking,garaza..." value="">
                                     </div>
                                  </div>
                                  <div class="col-md-3">
@@ -273,12 +272,15 @@ require_once('classes/lib.php');
                                     <div id="mappost" ></div>
                                  </div>
                               </div>
+                              <br />
                               <div class="row">
-                                 
-                                 <?php echo htmlspecialchars(DB::prikaziSlike(),ENT_QUOTES);?>
-                                    <input  type="file" multiple onchange="processSelectedFiles(this)"/> <br/>
-                                   
-                              
+                              <div class="col-md-12">
+                                 <form class="form-group" action="fajlovi.php" method="post" enctype="multipart/form-data">
+                                    <input type="file" class="btn btn-primary" name="image"/> <br/>
+                                    <input   type="submit" class="btn btn-primary" name="sumit" value="Upload"/>
+                                    </br>
+                                 </form>
+                                 </div>
                               </div>
                               <button id="btnSubmit"   class="btn btn-info btn-fill pull-right">Prosledi oglas</button>
                               <div class="clearfix"></div>
