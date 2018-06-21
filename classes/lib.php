@@ -390,11 +390,12 @@ class DB
                     //$niz[$id] = new Marker($stan_id, $longituda, $latituda);
 
                     //echo '<img height="200" width="200" src="data:image;base64,'.$niz[2].' "> ';
-                    echo "<img height='250' width='250' src=$niz[1]>";
+                    //echo "<img height='250' width='250' src=$niz[1]>";
                 }
 
                 $konekcija->close();
-                //return $niz;
+                var_dump($niz);
+                return $niz;
             }
             else{
                 if ($konekcija->errno) {
