@@ -5,6 +5,7 @@ class oglasZaStan
     public $stan_id;
     public $longituda;
     public $latituda;
+    public $tip_oglasa;
     public $namestenost;
     public $tip_objekta;
     public $grejanje;
@@ -20,11 +21,12 @@ class oglasZaStan
     public $datum_postavljanja;
     public $memberID;
 
-    public function __construct($stan_id,$longituda,$latituda,$namestenost,$tip_objekta,$grejanje,$pomocne_strukture,$cena,$kvadratura,$broj_soba,$sprat,$lokacija,$telefon,$dodatno,$uknjizenost,$datum_postavljanja,$memberID)
+    public function __construct($stan_id,$longituda,$latituda,$tip_oglasa,$namestenost,$tip_objekta,$grejanje,$pomocne_strukture,$cena,$kvadratura,$broj_soba,$sprat,$lokacija,$telefon,$dodatno,$uknjizenost,$datum_postavljanja,$memberID)
     {
         $this->stan_id=$stan_id;
         $this->longituda=$longituda;
         $this->latituda=$latituda;
+        $this->tip_oglasa=$tip_oglasa;
         $this->namestenost=$namestenost;
         $this->tip_objekta=$tip_objekta;
         $this->grejanje=$grejanje;

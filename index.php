@@ -1,7 +1,7 @@
 <?php require('includes/config.php');
 
 //if logged in redirect to members page
-if( $user->is_logged_in() ){ header('Location: memberpage.php'); exit(); }
+//if( !$user->is_logged_in() ){ header('Location: memberpage.php'); exit(); }
 
 //if form has been submitted process it
 if(isset($_POST['submit'])){
@@ -46,6 +46,7 @@ if(isset($_POST['submit'])){
 		$stmt = $db->prepare('SELECT email FROM members WHERE email = :email');
 		$stmt->execute(array(':email' => $email));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		$_SESSION['email'] = $email;
 
 		if(!empty($row['email'])){
 			$error[] = 'Email provided is already in use.';
@@ -75,22 +76,9 @@ if(isset($_POST['submit'])){
 			));
 			$id = $db->lastInsertId('memberID');
 
-			//send email
-			$to = $_POST['email'];
-			$subject = "Registration Confirmation";
-			$body = "<p>Thank you for registering at demo site.</p>
-			<p>To activate your account, please click on this link: <a href='".DIR."activate.php?x=$id&y=$activasion'>".DIR."activate.php?x=$id&y=$activasion</a></p>
-			<p>Regards Site Admin</p>";
-
-			$mail = new Mail();
-			$mail->setFrom(SITEEMAIL);
-			$mail->addAddress($to);
-			$mail->subject($subject);
-			$mail->body($body);
-			$mail->send();
 
 			//redirect to index page
-			header('Location: index.php?action=joined');
+			header('Location: login.php');
 			exit;
 
 		//else catch the exception and show the error.
@@ -99,6 +87,8 @@ if(isset($_POST['submit'])){
 		}
 
 	}
+
+	
 
 }
 

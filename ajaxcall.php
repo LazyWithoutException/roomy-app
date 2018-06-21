@@ -4,13 +4,6 @@ require_once('includes/config.php');
 include_once 'classes/password.php';
 
 
-$hobi=(string)$_GET["hobi"];
-$osobine=(string)$_GET["osobine"];
-$pol=(string)$_GET["pol"];
-$zaposlen=(string)$_GET["zaposlen"];
-$godine=intval($_GET["godine"]);
-
-
 $tip=(string)$_GET["tip"];
 $kvadratura=intval($_GET["kvadratura"]);
 $cena=intval($_GET["cena"]);
@@ -21,23 +14,30 @@ $uknjizenost=(string)$_GET["uknjizenost"];
 $telefon=(string)$_GET["telefon"];
 $sobe=intval($_GET["sobe"]);
 $sprat=intval($_GET["sprat"]);
-$latituda=intval($_GET["lat"]);
-$langituda=intval($_GET["lng"]);
+$latituda=(string)$_GET["lat"];
+$langituda=(string)$_GET["lng"];
 $opis=(string)$_GET["opis"];
 $lokacija=(string)$_GET["adresa"];
 $memberId=intval($_SESSION['memberID']);
 
 
 $baza=new DB();
+//var_dump($baza->vratiSveStanove());
 
-if($tip_oglasa=(string)$_GET["tip_oglasa"]=== true)
+if($_GET["tip_oglasa"]=="true")
 {
-    $stan=new oglasZaStan(null,$langituda,$latituda,$namestenost,$tip,$grejanje,$pomocne_strukture,$cena,$kvadratura,$sobe,$sprat,$lokacija,$telefon,$opis,$uknjizenost,"a",$memberId);
+    $stan=new oglasZaStan(null,$langituda,$latituda,"stan",$namestenost,$tip,$grejanje,$pomocne_strukture,$cena,$kvadratura,$sobe,$sprat,$lokacija,$telefon,$opis,$uknjizenost,"a",$memberId);
     $baza->dodajOglasZaStan($stan);
 }
 else
 {
-    $cimer=new oglasZaCimera(null,$langituda,$latituda,$namestenost,$tip,$grejanje,$pomocne_strukture,$cena,$kvadratura,$sobe,$sprat,$lokacija,$telefon,$opis,$uknjizenost,"a",$memberId,null,$pol,$godine,$osobine,$hobi,$zaposlen,null);
+    $hobi=(string)$_GET["hobi"];
+    $osobine=(string)$_GET["osobine"];
+    $pol=(string)$_GET["pol"];
+    $zaposlen=(string)$_GET["zaposlen"];
+    $godine=intval($_GET["godine"]);
+
+    $cimer=new oglasZaCimera(null,$langituda,$latituda,"cimer",$namestenost,$tip,$grejanje,$pomocne_strukture,$cena,$kvadratura,$sobe,$sprat,$lokacija,$telefon,$opis,$uknjizenost,"a",$memberId,null,$pol,$godine,$osobine,$hobi,$zaposlen,null);
     $baza->dodajOglasZaCimera($cimer);
 }
 

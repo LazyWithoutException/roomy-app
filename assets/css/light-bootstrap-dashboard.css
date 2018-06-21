@@ -1733,14 +1733,14 @@ fieldset[disabled] .btn-neutral.active {
 .navbar .btn-simple {
     font-size: 16px;
 }
-
+/*
 .navbar.fixed {
     width: calc(100% - $sidebar-width);
     right: 0;
     left: auto;
     border-radius: 0;
 }
-
+*/
 .navbar-nav > li > .dropdown-menu {
     border-radius: 10px;
     margin-top: -5px;
@@ -1755,7 +1755,7 @@ fieldset[disabled] .btn-neutral.active {
 .navbar-transparent .navbar-brand:focus, .navbar-transparent .navbar-brand:hover, [class*="navbar-ct"] .navbar-brand:focus, [class*="navbar-ct"] .navbar-brand:hover {
     background-color: transparent;
     opacity: 1;
-    filter: alpha(opacity=100);
+    filter: alpha(opacity=30);
 }
 
 .navbar-transparent .navbar-nav > li > a:not(.btn), [class*="navbar-ct"] .navbar-nav > li > a:not(.btn) {

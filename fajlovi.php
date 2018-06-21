@@ -20,6 +20,7 @@ if(isset($_POST['sumit']))
 
         DB::dodajSliku($name,$image);
     }
+    DB::prikaziSlike();
 }
 
 /*if(isset($_POST['submit']))

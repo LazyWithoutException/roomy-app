@@ -6,6 +6,48 @@ if(!$user->is_logged_in()){ header('Location: login.php'); exit(); }
 //define page title
 $title = 'Roomy Profil';
 
+$u=$_SESSION['username'];
+
+if(isset($_POST["submitEditProfile"])){
+    echo "Podaci uspesno snimljeni.";
+    //hash the password
+    $hashPass = $user->password_hash($_POST['editPassword'], PASSWORD_BCRYPT);
+    $username = $_POST['editUsername'];
+    $email = $_POST['editEmail'];
+    $pass = $_POST['editPassword'];
+    $passCon = $_POST['editPasswordConfirm'];
+
+    if($_POST['editPassword'] != $_POST['editPasswordConfirm'])
+    {
+        echo "AAAAAAAAAAA";
+    }
+    
+
+    //create the activasion code
+    $activasion = md5(uniqid(rand(),true));
+    // !!!!!!!!!!!!!!!! active =>$activasion u slucaju da imamo aktivaciju mejla
+    try {
+        
+        //insert into database with a prepared statement
+        $stmt = $db->prepare("UPDATE members SET username='$username',password='$hashPass',email='$email' WHERE username='$u'");
+        $stmt->execute();
+        $id = $db->lastInsertId('memberID');
+        $_SESSION['username']=$username;
+        $_SESSION['password']=$password;
+        $_SESSION['email']=$email;
+
+
+        //redirect to index page
+        header('Location: profile.php');
+        exit;
+
+    //else catch the exception and show the error.
+    } catch(PDOException $e) {
+        $error[] = $e->getMessage();
+    }
+
+}
+
 //include header template
 require('layout/header.php'); 
 ?>
@@ -50,7 +92,7 @@ require('layout/footer.php');
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="red" data-image="assets/img/sidebar-2.jpg">
+    <div class="sidebar" data-color="orange" data-image="assets/img/sidebar-2.jpg">
 
     <!--
 
@@ -91,6 +133,12 @@ require('layout/footer.php');
                         <p>Korisnicki profil</p>
                     </a>
                 </li>
+                <li>
+                    <a href="logout.php">
+                    <i class="pe-7s-back"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
 				<li class="active-pro">
                     <a href="#">
                         <i class="pe-7s-rocket"></i>
@@ -115,66 +163,12 @@ require('layout/footer.php');
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
+                        
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                           <a href="">
-                               <p>Account</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                            <a href='logout.php'>
-                                <p>Log out</p>
-                            </a>
-                        </li>
+                       
+                       
 						<li class="separator hidden-lg"></li>
                     </ul>
                 </div>
@@ -189,48 +183,18 @@ require('layout/footer.php');
                                 <h4 class="title">Edit Profile</h4>
                             </div>
                             <div class="content">
-                                <form>
+                            <form action="profile.php" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                                <input type="text" name="editUsername" class="form-control" placeholder="Username" value="<?php echo htmlspecialchars($_SESSION['username'], ENT_QUOTES); ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder="Email">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                                <input type="email" name="editEmail" class="form-control" placeholder="Email" value="<?php echo htmlspecialchars($_SESSION['email'], ENT_QUOTES); ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -238,68 +202,25 @@ require('layout/footer.php');
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control" placeholder="City" value="Mike">
+                                                <label>Password</label>
+                                                <input type="password" name="editPassword" class="form-control" placeholder="password">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
+                                                <label>Confirm password</label>
+                                                <input type="password" name="editPasswordConfirm" class="form-control" placeholder="re-enter password">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit" name="submitEditProfile" class="btn btn-info btn-fill pull-right">Update Profile</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-user">
-                            <div class="image">
-                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
-                            </div>
-                            <div class="content">
-                                <div class="author">
-                                     <a href="#">
-                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
-
-                                      <h4 class="title">Mike Andrew<br />
-                                         <small>michael24</small>
-                                      </h4>
-                                    </a>
-                                </div>
-                                <p class="description text-center"> "Lamborghini Mercy <br>
-                                                    Your chick she so thirsty <br>
-                                                    I'm in that two seat Lambo"
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="text-center">
-                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-
-                            </div>
-                        </div>
-                    </div>
+                    
 
                 </div>
             </div>
@@ -348,6 +269,7 @@ require('layout/footer.php');
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
+    <script src="javascript/ajax.js"></script>
 
 	
 </html>
