@@ -3,15 +3,10 @@ require_once('classes/lib.php');
 require_once('includes/config.php');
 include_once 'classes/password.php';
 
-<<<<<<< HEAD
-
-
+$stan=$_GET['id'];
 if(isset($_GET["tip"])){
-    $stan=$_GET["id"];
-=======
-if(isset($_GET["tip"])){
->>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
     if($_GET["tip"] == "stan"){
+
         echo $json=json_encode(DB::vratiOglasZaStan($stan));
     }
     else{

@@ -8,11 +8,7 @@ function initMap() {
     styles: styles
   });
 
-<<<<<<< HEAD
   mappost.addListener("click", function(event) {
-=======
-  mappost.addListener("click", function (event) {
->>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
     addMarker(event.latLng);
   });
 

@@ -40,11 +40,7 @@ if(isset($_POST['sumit']))
             echo "Nepodrzana ekstenzija fajla za uploadovanje!";
         }
     }
-<<<<<<< HEAD
-    DB::prikaziSlike();
-=======
    
->>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
 }
 
 /*if(isset($_POST['submit']))
