@@ -278,7 +278,7 @@ require_once('classes/lib.php');
                               <div class="row">
                                     <div class="col-md-12">
                                           <div class="form-group">
-                                                <form onsubmit="return false" class="form-group"  method="GET"  enctype="multipart/form-data">
+                                                <form onsubmit="return false" action="memberpage.php" class="form-group"  method="GET"  enctype="multipart/form-data">
                                                       <input id="in" type="file"  class="btn btn-primary" name="image"/> <br/>
                                                       <input  class="btn btn-primary"  id="upload" type="submit" name="sumit" value="Upload"/>
                                                 </form>

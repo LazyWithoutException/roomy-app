@@ -451,14 +451,27 @@ class DB
             // u slučaju greške pri povezivanju odštampati odgovarajuću poruku
             print ("Greška pri povezivanju sa bazom podataka ($konekcija->connect_errno): $konekcija->connect_error");
         } else {
-            $naredba = $konekcija->prepare("DELETE FROM oglas_za_cimera WHERE cimer_id = ?");
+            $naredba = $konekcija->prepare("DELETE FROM oglas_za_cimera WHERE id_za_stan = ?");
             $naredba->bind_param("i", $id);
             $rezultat = $naredba->execute();
 
+            $naredba1 = $konekcija->prepare("DELETE FROM oglas_za_stan WHERE stan_id = ?");
+            $naredba1->bind_param("i", $id);
+            $rezultat1 = $naredba1->execute();
+
             $naredba->close();
+            $naredba1->close();
             $konekcija->close();
 
             if (!$rezultat) {
+                if ($konekcija->errno) {
+                    print ("Greška pri izvrsenju upita ($konekcija->errno): $konekcija->error");
+                } else {
+                    print ("Nepoznata greška pri izvrsenju upita");
+                }
+            }
+
+            if (!$rezultat1) {
                 if ($konekcija->errno) {
                     print ("Greška pri izvrsenju upita ($konekcija->errno): $konekcija->error");
                 } else {
