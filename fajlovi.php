@@ -43,6 +43,7 @@ if(isset($_POST['sumit']))
    
 }
 
+
 /*if(isset($_POST['submit']))
 {
     if(getimagesize($_FILES['image']['tmp_name'])==FALSE)

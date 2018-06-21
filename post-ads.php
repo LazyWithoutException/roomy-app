@@ -273,13 +273,20 @@ require_once('classes/lib.php');
                                     <div id="mappost" ></div>
                                  </div>
                               </div>
-                              <div class="row">
-                                 
-                                 <?php echo htmlspecialchars(DB::prikaziSlike(),ENT_QUOTES);?>
-                                    <input  type="file" multiple onchange="processSelectedFiles(this)"/> <br/>
-                                   
                               
+                                 
+                                 
+                              <div class="row">
+                              <div class="form-group">
+                                 <form onsubmit="return false" class="form-group"  method="post"  enctype="multipart/form-data">
+                                    <input id="in" type="file" name="image"/> <br/>
+                                    <input  class="btn btn-primary"  id="upload" type="submit" name="sumit" value="Upload"/>
+                                    </br>
+                                    <div id="slike"></div>
+                                 </form>
                               </div>
+                              </div>
+                              
                               <button id="btnSubmit"   class="btn btn-info btn-fill pull-right">Prosledi oglas</button>
                               <div class="clearfix"></div>
                            </div>
@@ -309,6 +316,7 @@ require_once('classes/lib.php');
       </div>
    </body>
    <script src="javascript/main.js"></script>
+   <script src="javascript/ajax.js"></script>
    <script src="javascript/mappost.js"></script>
    <script src="javascript/map_styles.js"></script>
    <script src="javascript/post-manager.js"></script>

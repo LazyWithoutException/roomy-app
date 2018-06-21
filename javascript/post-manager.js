@@ -79,3 +79,19 @@ divCimer.style.display="none";
 var divCimerr=document.getElementById("cimerr");
 divCimerr.style.display="none";
 
+
+
+function posaljiSlike(){
+    var str=input.value;
+    console.log(input.value);
+   getData("fajlovi.php?sumit=true&nazivslike="+str)
+   .then(data=>{
+    console.log(data);
+   })
+   
+}
+
+var upload=document.getElementById("upload");
+var input=document.getElementById("in");
+upload.addEventListener("click",posaljiSlike)
+
