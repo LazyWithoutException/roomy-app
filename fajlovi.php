@@ -5,14 +5,15 @@ include_once 'classes/password.php';
 ini_set('mysql.connect_timeout',300);
 ini_set('default_socket_timeout',300);
 
-var_dump(DB::vratiCimeraISlike(167));
+var_dump(DB::obrisiCimera(161));
 
 if(isset($_GET['sumit']))
 {
     $filename=$_GET['nazivslike'];
+    var_dump($filename);
+    var_dump($_FILES);
     $file=substr($filename,12);
-    $fileNameNew=uniqid('',true).".".$file;
-    $fileNameAct="img/".$fileNameNew;
+    $fileNameAct="img/".$file;
     DB::dodajSliku($fileNameAct,$_SESSION['kljuc']);
 }
 
@@ -55,9 +56,9 @@ if(isset($_GET['sumit']))
 }*/
 
 
-/*if(isset($_POST['submit']))
+/*if(isset($_GET['sumit']))
 {
-    if(getimagesize($_FILES['image']['tmp_name'])==FALSE)
+   if(getimagesize($_FILES['image']['tmp_name'])==FALSE)
     {
         echo 'Please select image.';
     }
@@ -66,8 +67,8 @@ if(isset($_GET['sumit']))
         $image=addslashes($_FILES['image']['tmp_name']);
         $name=addslashes($_FILES['image']['name']);
         $image=file_get_contents($image);
-
-        DB::dodajSlikuZaKorisnika($image);
+        $image=base64_encode($image);
+        DB::dodajSliku($name,$image);
     }
 }*/
 
