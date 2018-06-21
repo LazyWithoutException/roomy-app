@@ -13,14 +13,38 @@ if(isset($_POST['sumit']))
     }
     else
     {
-        $image=addslashes($_FILES['image']['tmp_name']);
-        $name=addslashes($_FILES['image']['name']);
-        $image=file_get_contents($image);
-        $image=base64_encode($image);
+        $file=$_FILES['image'];
+        $fileSize=$_FILES['image']['size'];
+        $fileTmpName=$_FILES['image']['tmp_name'];
+        $fileName=$_FILES['image']['name'];
+        $fileExt=explode('.',$fileName);
+        $fileActualExt=strtolower(end($fileExt));
 
-        DB::dodajSliku($name,$image);
+        $allowed = array('jpg','jpeg','png','pdf');
+
+        if(in_array($fileActualExt,$allowed))
+        {
+            if($fileSize<1000000){
+                $fileNameNew=uniqid('',true).".".$fileActualExt;
+                $fileDestination='img/'.$fileNameNew;
+                move_uploaded_file($fileTmpName,$fileDestination);
+                header("Location: fajlovi.php?uploadsucces");
+                DB::dodajSliku($fileDestination,$_SESSION['kljuc']);
+            }
+            else{
+                echo 'Fajl je previse veliki!';
+            }
+        }
+        else
+        {
+            echo "Nepodrzana ekstenzija fajla za uploadovanje!";
+        }
     }
+<<<<<<< HEAD
     DB::prikaziSlike();
+=======
+   
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
 }
 
 /*if(isset($_POST['submit']))

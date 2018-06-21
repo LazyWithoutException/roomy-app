@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 function waitForMarkers(){
+=======
+(function waitForMarkers(){
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
     console.log("ajax")
     $.ajax({
         type:"GET",
@@ -9,6 +13,7 @@ function waitForMarkers(){
         success:function(data){
             var x=JSON.stringify(data);
             console.log(x);
+<<<<<<< HEAD
             setTimeout(waitForMarkers,50000);
         }
     })
@@ -23,3 +28,9 @@ function getData(url){
         xhr.send();
       });
 }
+=======
+            setTimeout(waitForMarkers,5000);
+        }
+    })
+})()
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809

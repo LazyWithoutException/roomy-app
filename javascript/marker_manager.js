@@ -1,6 +1,9 @@
 var markeri = [];
 var marker;
+<<<<<<< HEAD
 
+=======
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
 function createMarker(id, tip, url) {
   if (tip == "stan") {
     var image = "img/stan64.png";
@@ -16,6 +19,7 @@ function createMarker(id, tip, url) {
   marker.addListener("click", data => {
     var id = marker["id"];
     var tip = marker["tip"];
+<<<<<<< HEAD
     console.log(id, tip);
     getMarkers("vratiPodatke.php?id=" + id + "&tip=" + tip)
       .then(data => {
@@ -29,6 +33,14 @@ function createMarker(id, tip, url) {
     id: id,
     marker: marker
   };
+=======
+    getMarkers("vratiPodatke.php?id=" + id + "&tip=" + tip).then(data => {
+      console.log(data);
+      openNav();
+    });
+  });
+  obj = { id: id, marker: marker };
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
   markeri.push(obj);
 }
 
@@ -39,10 +51,17 @@ function populateMap() {
   });
 }
 ////////////////////////////
+<<<<<<< HEAD
 function getMarkers(url) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", url);
+=======
+function getMarkers() {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "vratimarkere.php?marker=true");
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
     xhr.onload = () => resolve(xhr.responseText);
     xhr.onerror = () => reject(xhr.statusText);
     xhr.send();
@@ -50,9 +69,21 @@ function getMarkers(url) {
 }
 
 
+<<<<<<< HEAD
 
 getMarkers("vratimarkere.php?marker=true")
   .then(data => {
+=======
+function sayHi() {
+  console.log('Hello');
+}
+
+
+getMarkers()
+.then(data => {
+  console.log(data)
+  if(data!=null){
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
     var x = JSON.parse(data);
     console.log(x)
     x.forEach(data => {
@@ -62,6 +93,7 @@ getMarkers("vratimarkere.php?marker=true")
       });
     });
     populateMap();
+<<<<<<< HEAD
   })
 
 function waitForMarkers() {
@@ -87,3 +119,12 @@ function waitForMarkers() {
     }
   })
 }
+=======
+  }
+  else{
+    console.log("greska")
+  }
+
+})
+console.log("test");
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809

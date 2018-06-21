@@ -44,14 +44,25 @@ body {
 #mySidenav{
     background-color:white;
 }
+<<<<<<< HEAD
 
+=======
+#mappost{
+    width:100%;
+    height:400px;
+}
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
 .navbar-header{
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     filter: alpha(opacity=80);
     -moz-opacity: 0.80;
     -khtml-opacity: 0.8;
     opacity: 0.8;
+<<<<<<< HEAD
 }
 #paragraf{
      
+=======
+  
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
 }

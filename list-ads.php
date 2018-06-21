@@ -129,6 +129,11 @@
                            <th>Sprat</th>
                            <th>Telefon</th>
                            <th>Namestenost</th>
+<<<<<<< HEAD
+=======
+                           <th>Tip objekta</th>
+                           <th>Tip oglasa</th>
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
                            <th>Uknjizenost</th>
                         </thead>
                         <tbody>
@@ -181,7 +186,10 @@
    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
    <script src="assets/js/demo.js"></script>
    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<<<<<<< HEAD
 
        <script src="javascript/ajax.js"></script>
+=======
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
    <script src="javascript/table_manager.js"></script>
 </html>

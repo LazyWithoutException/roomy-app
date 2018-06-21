@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function openNav(obj) {
   var side = document.getElementById("mySidenav");
   side.style.width = "450px";
@@ -77,3 +78,15 @@ function openNav(obj) {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
+=======
+function openNav() {
+    var d = document.getElementById("mySidenav");
+    d.style.width = "450px";
+  }
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  
+  
+  
+>>>>>>> fcf203284021a93ba5550ee9a3a8d69853304809
