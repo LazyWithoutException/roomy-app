@@ -24,12 +24,14 @@ $memberId=intval($_SESSION['memberID']);
 
 
 $baza=new DB();
-var_dump($baza->vratiOglasZaCimeraStan_id(136));
+var_dump($baza->prikaziSlike());
 
 if($_GET["tip_oglasa"]=="true")
 {
     $stan=new oglasZaStan(null,$langituda,$latituda,"stan",$namestenost,$tip,$grejanje,$pomocne_strukture,$cena,$kvadratura,$sobe,$sprat,$lokacija,$telefon,$opis,$uknjizenost,date("d-m-Y"),$memberId);
     $baza->dodajOglasZaStan($stan);
+
+
 }
 else
 {

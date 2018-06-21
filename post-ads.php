@@ -208,18 +208,17 @@ require_once('classes/lib.php');
                                     <div class="form-group">
                                        <label for="exampleFormControlSelect1">Grejanje </label>
                                        <select class="form-control" id="grejanje">
-                                          <option>Da</option>
-                                          <option>Ne</option>
+                                          <option>Centralno</option>
+                                          <option>TA Pec</option>
+                                          <option>Etazno</option>
+                                          <option>Drugo</option>
                                        </select>
                                     </div>
                                  </div>
                                  <div class="col-md-3">
                                     <div class="form-group">
-                                       <label for="exampleFormControlSelect1">Pomocne zgrade </label>
-                                       <select class="form-control" id="pomocne-zgrade">
-                                          <option>Da</option>
-                                          <option>Ne</option>
-                                       </select>
+                                          <label>Pomocne strukture</label>
+                                          <input id="pomocne-zgrade" type="text" class="form-control" placeholder="Terasa,parking,garaza..." value="">
                                     </div>
                                  </div>
                                  <div class="col-md-3">

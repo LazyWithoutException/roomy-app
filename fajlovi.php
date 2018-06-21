@@ -5,7 +5,12 @@ include_once 'classes/password.php';
 ini_set('mysql.connect_timeout',300);
 ini_set('default_socket_timeout',300);
 
-if(isset($_POST['sumit']))
+if(isset($_GET['sumit'])=="true")
+{
+    $filename=$_GET['nazivslike'];
+}
+
+/*if(isset($_POST['sumit']))
 {
     if(getimagesize($_FILES['image']['tmp_name'])==FALSE)
     {
@@ -41,7 +46,7 @@ if(isset($_POST['sumit']))
         }
     }
    
-}
+}*/
 
 
 /*if(isset($_POST['submit']))

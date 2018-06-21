@@ -16,6 +16,7 @@ var lat=markers[0].position.lat()
 var lng=markers[0].position.lng()
 var opis=document.getElementById("opis").value;
 
+
 var hobi=document.getElementById("hobi").value;
 var osobine=document.getElementById("osobine").value
 var pol=document.getElementById("pol").value
