@@ -7,7 +7,7 @@ function openNav(obj) {
   main.childNodes[1].innerHTML = "";
   main.childNodes[3].innerHTML = "";
   //slider
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < obj.slike.length; i++) {
     var li = document.createElement("li");
     li.setAttribute("data-target", "#carouselExampleIndicators");
     li.setAttribute("data-slide-to", i.toString());
@@ -19,59 +19,60 @@ function openNav(obj) {
     var image = document.createElement("IMG");
     image.setAttribute("alt", "First slide");
     image.setAttribute("class", "d-block w-100");
-    image.src = "img/stan.jpg";
+   // image.src = 
     carouselItem.appendChild(image);
     main.childNodes[3].appendChild(carouselItem);
   }
 
-  console.log(obj);
+  console.log(obj.slike[0].naziv.toString());
+  
   var cena = (document.getElementById("cena").innerHTML =
-    "<label >Cena:</label>" + "<label >" + obj.cena + "</label>");
+    "<label >Cena:</label>" + "<label >" + obj.stan.cena + "</label>");
   var kvadratura = (document.getElementById("kvadratura").innerHTML =
-    "<label >Kvadratura:</label>" + "<label >" + obj.kvadratura + "</label>");
+    "<label >Kvadratura:</label>" + "<label >" + obj.stan.kvadratura + "</label>");
   var brojSoba = (document.getElementById("brojsoba").innerHTML =
-    "<label >Beoj soba:</label>" + "<label >" + obj.broj_soba + "</label>");
+    "<label >Beoj soba:</label>" + "<label >" + obj.stan.broj_soba + "</label>");
   var lokacija = (document.getElementById("lokacija").innerHTML =
-    "<label >Lokacija:</label>" + "<label >" + obj.lokacija + "</label>");
+    "<label >Lokacija:</label>" + "<label >" + obj.stan.lokacija + "</label>");
   var sprat = (document.getElementById("sprat").innerHTML =
-    "<label >Sprat:</label>" + "<label >" + obj.sprat + "</label>");
+    "<label >Sprat:</label>" + "<label >" + obj.stan.sprat + "</label>");
   var uknjizenost = (document.getElementById("uknjizenost").innerHTML =
-    "<label >Ukljizenost:</label>" + "<label >" + obj.uknjizenost + "</label>");
+    "<label >Ukljizenost:</label>" + "<label >" + obj.stan.uknjizenost + "</label>");
   var namestenost = (document.getElementById("namestenost").innerHTML =
-    "<label >Namestenost:</label>" + "<label >" + obj.namestenost + "</label>");
+    "<label >Namestenost:</label>" + "<label >" + obj.stan.namestenost + "</label>");
   var tipObjekat = (document.getElementById("tipobjekta").innerHTML =
-    "<label >Tip objekta:</label>" + "<label >" + obj.tip_objekta + "</label>");
+    "<label >Tip objekta:</label>" + "<label >" + obj.stan.tip_objekta + "</label>");
   var grejanje = (document.getElementById("grejanje").innerHTML =
-    "<label >Grejanje:</label>" + "<label >" + obj.grejanje + "</label>");
+    "<label >Grejanje:</label>" + "<label >" + obj.stan.grejanje + "</label>");
   var pomocneStrukutre = (document.getElementById(
     "pomocnestrukture"
   ).innerHTML =
     "<label >Pomocne strukture:</label>" +
     "<label >" +
-    obj.pomocne_strukture +
+    obj.stan.pomocne_strukture +
     "</label>");
   var dodatno = (document.getElementById("dodatno").innerHTML =
     "<label >Dodatne napomene:</label>" +
     "<label >" +
-    obj.dodatno +
+    obj.stan.dodatno +
     "</label>");
   var telefon = (document.getElementById("telefon").innerHTML =
-    "<label >Telefon:</label>" + "<label >" + obj.telefon + "</label>");
+    "<label >Telefon:</label>" + "<label >" + obj.stan.telefon + "</label>");
 
-  if (obj.tip_oglasa == "cimer") {
+  if (obj.stan.tip_oglasa == "cimer") {
     var rasponGodina = (document.getElementById("raspongodina").innerHTML =
-      "<label >Godine:</label>" + "<label >" + obj.raspon_godina + "</label>");
+      "<label >Godine:</label>" + "<label >" + obj.stan.raspon_godina + "</label>");
     var osobine = (document.getElementById("osobine").innerHTML =
-      "<label >Osobine:</label>" + "<label >" + obj.osobine + "</label>");
+      "<label >Osobine:</label>" + "<label >" + obj.stan.osobine + "</label>");
     var hobi = (document.getElementById("hobi").innerHTML =
-      "<label >Hobi:</label>" + "<label >" + obj.hobi + "</label>");
+      "<label >Hobi:</label>" + "<label >" + obj.stan.hobi + "</label>");
     var radniOdnos = (document.getElementById("radniodnos").innerHTML =
       "<label >Radni odsnos:</label>" +
       "<label >" +
-      obj.radni_odnos +
+      obj.stan.radni_odnos +
       "</label>");
     var pol = (document.getElementById("pol").innerHTML =
-      "<label >Pol:</label>" + "<label >" + obj.pol + "</label>");
+      "<label >Pol:</label>" + "<label >" + obj.stan.pol + "</label>");
   }
 }
 function closeNav() {
