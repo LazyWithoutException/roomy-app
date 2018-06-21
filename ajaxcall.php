@@ -24,7 +24,7 @@ $memberId=intval($_SESSION['memberID']);
 
 
 $baza=new DB();
-var_dump($baza->prikaziSlike());
+//var_dump($baza->prikaziSlike());
 
 if($_GET["tip_oglasa"]=="true")
 {

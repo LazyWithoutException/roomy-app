@@ -7,10 +7,10 @@ $stan=$_GET['id'];
 if(isset($_GET["tip"])){
     if($_GET["tip"] == "stan"){
 
-        echo $json=json_encode(DB::vratiOglasZaStan($stan));
+        echo $json=json_encode(DB::vratiStanISlike($stan));
     }
     else{
-        echo $json=json_encode(DB::vratiOglasZaCimeraStan_id($stan));
+        echo $json=json_encode(DB::vratiCimeraISlike($stan));
     }
 }
 

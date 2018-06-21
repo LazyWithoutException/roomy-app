@@ -5,9 +5,15 @@ include_once 'classes/password.php';
 ini_set('mysql.connect_timeout',300);
 ini_set('default_socket_timeout',300);
 
-if(isset($_GET['sumit'])=="true")
+var_dump(DB::vratiCimeraISlike(167));
+
+if(isset($_GET['sumit']))
 {
     $filename=$_GET['nazivslike'];
+    $file=substr($filename,12);
+    $fileNameNew=uniqid('',true).".".$file;
+    $fileNameAct="img/".$fileNameNew;
+    DB::dodajSliku($fileNameAct,$_SESSION['kljuc']);
 }
 
 /*if(isset($_POST['sumit']))
